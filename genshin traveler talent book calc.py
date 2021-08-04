@@ -22,11 +22,11 @@ def mix_book(book_dict):
 
     if book_dict['need'][2] > 0: #3단계 책이 부족한경우
         if book_dict['surplus'][1]//3 >= book_dict['need'][2]: #2단계 책 잉여분만으로도 커버 가능한 경우
-                    book_dict['mix_cnt'][1] += book_dict['need'][2]
-                    book_dict['surplus'][1] = book_dict['surplus'][1] - book_dict['need'][2]*3
-                    book_dict['now'][1] = book_dict['now'][1] - book_dict['need'][2]*3
-                    book_dict['now'][2] = book_dict['now'][2] + book_dict['need'][2]
-                    book_dict['need'][2] = 0
+                book_dict['mix_cnt'][1] += book_dict['need'][2]
+                book_dict['surplus'][1] = book_dict['surplus'][1] - book_dict['need'][2]*3
+                book_dict['now'][1] = book_dict['now'][1] - book_dict['need'][2]*3
+                book_dict['now'][2] = book_dict['now'][2] + book_dict['need'][2]
+                book_dict['need'][2] = 0
         else:
             if (book_dict['surplus'][1] + book_dict['surplus'][0]//3)//3 >= book_dict['need'][2]: #영혼까지 끌어모으면 가능한 경우
                 book_dict['mix_cnt'][0] += (book_dict['need'][2]*3 - book_dict['surplus'][1])
@@ -79,7 +79,7 @@ def limit_level(now_lv, goal_lv, books):
         back_lv = goal_lv[i] #범위 뒤
 
         if front_lv == back_lv or back_lv == 0 or back_lv == 1:
-            print(f"{talent_name[i]}특성은 설정대로 레벨업 하지 않고 넘어갑니다")
+            print(f"{talent_name[i]}특성은 설정대로 레벨 업 하지 않고 넘어갑니다")
             continue
 
         for j in range(front_lv-1, back_lv-1):
@@ -91,14 +91,14 @@ def limit_level(now_lv, goal_lv, books):
                 books[book]['now'][lv-1] = books[book]['now'][lv-1] - ea
                 sum_mora += goal_mora[j]
             else:
-                print(f"{lv_cnt}레벨업에 실패했습니다. {talent_name[i]}특성은 현재 {lv_cnt-1}까지 레벨업 가능합니다")
+                print(f"{lv_cnt}레벨 업에 실패했습니다. {talent_name[i]}특성은 현재 {lv_cnt-1}까지 레벨 업 가능합니다")
                 lvup_state = False
                 continue
 
             lv_cnt += 1
 
         if lvup_state == True:
-            print("{0}특성은 목표한 {1}레벨업까지 가능합니다".format(talent_name[i], back_lv))
+            print(f"{talent_name[i]}특성은 목표한 {back_lv}레벨까지 가능합니다")
 
     print()
 
@@ -106,7 +106,7 @@ def limit_level(now_lv, goal_lv, books):
         print(f"레벨 업 후 남은 책은 {books[book]['name']}의 가르침 {books[book]['now'][0]}권, 인도 {books[book]['now'][1]}권, 철학 {books[book]['now'][2]}권 입니다")
     print(f"\n특성 레벨 업에 필요한 모라는 총 {sum_mora}모라 입니다")
     
-    
+
 def try_domain(books):
     return max(sum([books[2]*9, books[1]*3, books[0]])//8, 1)
 
@@ -196,8 +196,8 @@ def calc_book(buse, poong, cg, now_lv, goal_lv):
 
     for book in books.keys():
         if books[book]['state'] == True and books[book]['mix_cnt'].count(0) != 2: #레벨 업이 가능하고, 조합이 필요한 경우
-            print(f"{books[book]['name']}의 가르침을 {books[book]['mix_cnt'][0]*3}개 소모하여 인도를 {books[book]['mix_cnt'][0]}권 만들어야 합니다")
-            print(f"{books[book]['name']}의 인도를 {books[book]['mix_cnt'][1]*3}개 소모하여 철학을 {books[book]['mix_cnt'][1]}권 만들어야 합니다\n")
+            if books[book]['mix_cnt'][0] != 0: print(f"{books[book]['name']}의 가르침을 {books[book]['mix_cnt'][0]*3}개 소모하여 인도를 {books[book]['mix_cnt'][0]}권 만들어야 합니다")
+            if books[book]['mix_cnt'][1] != 0: print(f"{books[book]['name']}의 인도를 {books[book]['mix_cnt'][1]*3}개 소모하여 철학을 {books[book]['mix_cnt'][1]}권 만들어야 합니다\n")
         else:
             if books[book]['state'] == True and books[book]['mix_cnt'].count(0) == 2: #레벨 업이 가능하고, 조합이 필요없는 경우
                 print(f"{books[book]['name']} 은/는 합성이 불필요합니다")
