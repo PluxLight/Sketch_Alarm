@@ -216,9 +216,7 @@ def calc_book(buse, poong, cg, now_lv, goal_lv):
     limit_level(now_lv, goal_lv, books)
 
 
-
-
-def main():
+if __name__=="__main__":
     # 현재 책 수량 단계가 낮을수록 리스트 앞에 있음
     now_buse = [17, 22, 10] #리얼
     # now_buse = [9, 18, 12] #테스트용 
@@ -238,8 +236,6 @@ def main():
 
     #값 = 유저가 소유한 [1단계, 2단계, 3단계] 부세, 풍아, 천광, /  현재 [무기, 전투, 폭발] 특성레벨, 목표 특성레벨
     calc_book(now_buse, now_poong, now_cg, now_lv, goal_lv)
-
-main()
 
 #행추 캐릭터 특성 소재 합성 시 25%의 확률로 일부 합성 재료를 반환한다.
 #합성 계산할 때 합성횟수 * 0.25 하고 정수부분을 재료에 포함시키는 공식으로
