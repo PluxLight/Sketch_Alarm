@@ -1,13 +1,8 @@
 package com.example;
 
-import java.lang.ProcessBuilder.Redirect.Type;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.List;
+import java.text.SimpleDateFormat;
 
 import javax.security.auth.login.LoginException;
-
-import org.jetbrains.annotations.NotNull;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,13 +11,19 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.entities.Activity.ActivityType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class tbot extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException {
+
+        long time0 = System.currentTimeMillis();
+        SimpleDateFormat simpl = new SimpleDateFormat("yyyy년 MM월 dd일 aa hh시 mm분 ss초");
+        String timestr0 = simpl.format(time0);
+
+        System.out.println(timestr0 + " 이건 void main 에서 출력한 것");
 
         // 기본 jda를 만들고
         JDA jda = JDABuilder.createDefault("ODcxMDI3NTgzNTIzOTEzNzM4.YQVVpg.AYLbNxRgwm_8H6WzC3o0LA9KfoU")
@@ -31,21 +32,7 @@ public class tbot extends ListenerAdapter {
 
         // jda에 이벤트를 감지하는 리스너를 넣는다.
         // jda.addEventListener(new tbot(), new MessageListener());
-        jda.addEventListener(new tbot());
-
-    }
-
-    public void onReady(@NotNull ReadyEvent event) {
-        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
-        String nowstr = now.toString();
-        JDA jda = event.getJDA();
-        long rn = event.getResponseNumber();
-        List<TextChannel> channels = jda.getTextChannelsByName("일반", true);
-        for(TextChannel ch : channels)
-        {
-            ch.sendMessage(nowstr + "\ni'm here !!!").queue();
-        }
-        System.out.printf("rn :  %d\n", rn);
+        jda.addEventListener(new tbot(), new OnReadyPlay(), new ShutEvent());
 
     }
 
@@ -59,6 +46,8 @@ public class tbot extends ListenerAdapter {
         User author = event.getAuthor();                //The user that sent the message
         Message message = event.getMessage();           //The message that was received.
         MessageChannel channel = event.getChannel();    //This is the MessageChannel that the message was sent to.
+        String msgdothg1 = "이건 !ping ping 메세지를 입력 해 doThing으로 보낸 메세지입니다";
+        String msgdothg2 = "이건 !sd 메세지를 입력 해 doThing으로 보낸 메세지입니다";
         
         // channel.sendMessage("Your message here.").queue();
 
@@ -76,15 +65,23 @@ public class tbot extends ListenerAdapter {
             System.out.println(message.getClass().getName());
             System.out.println(channel.getClass().getName());
 
-            sendPrivateMessage(author, "u n i");
+            // sendPrivateMessage(author, "u n i");
+            doThing(jda, msgdothg1);
+        }
+        else if (event.getMessage().getContentRaw().equals("!sd")) {
 
+            event.getChannel().sendMessage("i will be return").queue();
+            doThing(jda, msgdothg2);
+            jda.shutdown();
 
         }
     }
 
+
     public static void pr(Object obj) {
             System.out.println(obj);
         }
+
 
     public void sendPrivateMessage(User user, String content) {
         if (user.isBot())
@@ -92,4 +89,15 @@ public class tbot extends ListenerAdapter {
 
         user.openPrivateChannel().flatMap(channel -> channel.sendMessage(content)).queue();
     }
+
+
+    public void doThing(JDA jda, String sdmsg) {
+        long chid = 871290747377307730L;
+        TextChannel channel = jda.getTextChannelById(chid);
+        if (channel != null) {
+            channel.sendMessage(sdmsg).queue();
+        }
+    }
 }
+
+//channel = 871290747377307730

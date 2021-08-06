@@ -1,0 +1,62 @@
+PS D:\GitHub\pri-java-pj\jdademo>  d:; cd 'd:\GitHub\pri-java-pj\jdademo'; & 'c:\Users\sanghai\.vscode\extensions\vscjava.vscode-java-debug-0.35.0\scripts\launcher.bat' 'C:\Program Files\Java\jdk-16.0.2\bin\java.exe' '-XX:+ShowCodeDetailsInExceptionMessages' '-Dfile.encoding=UTF-8' '@C:\Users\sanghai\AppData\Local\Temp\cp_5140oroejd3xivjzjj2yuote9.argfile' 'com.example.tbot' 
+2021년 08월 06일 오후 05시 58분 47초 이건 void main 에서 출력한 것
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+SLF4J: Failed to load class "org.slf4j.impl.StaticMDCBinder".
+SLF4J: Defaulting to no-operation MDCAdapter implementation.
+SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
+[main] INFO JDA - Login Successful!
+[JDA MainWS-WriteThread] INFO WebSocketClient - Connected to WebSocket
+[JDA MainWS-ReadThread] INFO JDA - Finished Loading!
+2021년 08월 06일 오후 05시 58분 49초 이건 void onReady 에서 출력한 것
+rn :  2
+0 회
+2021년 08월 06일 오후 05시 59분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+1 회
+2021년 08월 06일 오후 06시 00분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+2 회
+2021년 08월 06일 오후 06시 01분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+3 회
+2021년 08월 06일 오후 06시 02분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+4 회
+2021년 08월 06일 오후 06시 03분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+5 회
+2021년 08월 06일 오후 06시 04분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+6 회
+2021년 08월 06일 오후 06시 05분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+7 회
+2021년 08월 06일 오후 06시 06분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+8 회
+2021년 08월 06일 오후 06시 07분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+9 회
+2021년 08월 06일 오후 06시 08분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+10 회
+2021년 08월 06일 오후 06시 09분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+11 회
+2021년 08월 06일 오후 06시 10분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+12 회
+2021년 08월 06일 오후 06시 11분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+13 회
+2021년 08월 06일 오후 06시 12분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+14 회
+2021년 08월 06일 오후 06시 13분 19초 이건 runnable - void run 에서 출력한 것
+rn :  2
+15 회
+2021년 08월 06일 오후 06시 14분 19초 이건 runnable - void run 에서 출력한 것
+
+
