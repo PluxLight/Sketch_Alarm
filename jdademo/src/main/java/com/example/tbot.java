@@ -87,23 +87,34 @@ public class tbot extends ListenerAdapter {
         
         // channel.sendMessage("Your message here.").queue();
 
-        // 받은 메세지 내용이 !ping이라면
-        if (event.getMessage().getContentRaw().equals("!ping ping")) {
-            // pong라는 내용을 보낸다.
-            event.getChannel().sendMessage("pong pong!").queue();
-            System.out.printf("author :  %s\n", author);
-            System.out.printf("message :  %s\n", message);
-            System.out.printf("channel :  %s\n", channel);
+        if (author.isBot()) return;
 
-            System.out.println("");
+        if (event.getMessage().getContentRaw().charAt(0) == '!') {
+            String[] msgs = event.getMessage().getContentRaw().substring(1).split(" ");
+            if (msgs.length <= 0) return;
+            if (msgs[0].equalsIgnoreCase("pid")) {
 
-            System.out.println(author.getClass().getName());
-            System.out.println(message.getClass().getName());
-            System.out.println(channel.getClass().getName());
-
-            // sendPrivateMessage(author, "u n i");
-            doThing(jda, msgdothg1);
+            }
+            //삭제할 때 그런 유저가 없으면 어떻게 뜨는지 미리 예시로 확인바람
         }
+
+        // 받은 메세지 내용이 !ping이라면
+        // if (event.getMessage().getContentRaw().equals("!ping ping")) {
+        //     // pong라는 내용을 보낸다.
+        //     event.getChannel().sendMessage("pong pong!").queue();
+        //     System.out.printf("author :  %s\n", author);
+        //     System.out.printf("message :  %s\n", message);
+        //     System.out.printf("channel :  %s\n", channel);
+
+        //     System.out.println("");
+
+        //     System.out.println(author.getClass().getName());
+        //     System.out.println(message.getClass().getName());
+        //     System.out.println(channel.getClass().getName());
+
+        //     // sendPrivateMessage(author, "u n i");
+        //     doThing(jda, msgdothg1);
+        // }
         // else if (event.getMessage().getContentRaw().equals("!sd")) {
 
         //     event.getChannel().sendMessage("i will be return").queue();
