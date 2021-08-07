@@ -62,6 +62,8 @@ def limit_level(books, ta_lv):
             books['now'][i+1] = books['now'][i+1] + surplus//3
             books['now'][i] = books['goal'][i] + surplus%3
 
+    print(f"싹 다 조합하면 {books['name']}의 가르침 {books['now'][0]}권, 인도 {books['now'][1]}권, 철학 {books['now'][2]}권 입니다\n")
+
 
     for i in range(0,3):
         lvup_state = True
@@ -186,7 +188,8 @@ def sim_calc(books, ta_lv):
 if __name__ == "__main__":
 
     books = {
-        'now' : [40, 35, 12],
+        'now' : [62, 53, 16],
+        # 'now' : [0, 0, 0],
         'goal': [0, 0, 0],
         'need': [0, 0, 0],
         'surplus': [0, 0, 0],
@@ -195,7 +198,6 @@ if __name__ == "__main__":
         'name': '천광'
     }
 
-    
     talent_lv = {
         'now' : [1, 1, 1],
         'goal' : [9, 9, 10]
