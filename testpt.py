@@ -1,34 +1,47 @@
 def af(a):
-    a[1] = 0
+    print(a)
 
 
 
 def main():
 
-    book = dict()
+    buse = [17, 22, 10] #리얼
+    # buse = [9, 18, 12] #테스트용 
+    poong = [66, 61, 14]
+    cg = [10, 9, 10]
 
-    print(type(book))
+    books = {
+        'buse' : {
+            'now' : [buse[0], buse[1], buse[2]],
+            'goal' : [0, 0, 0],
+            'need' : [0, 0, 0],
+            'surplus' : [0, 0, 0],
+            'mix_cnt' : [0, 0],
+            'state' : False,
+            'name' : "부세"
+        },
+        'poong' : {
+            'now' : [poong[0], poong[1], poong[2]],
+            'goal' : [0, 0, 0],
+            'need' : [0, 0, 0],
+            'surplus' : [0, 0, 0],
+            'mix_cnt' : [0, 0],
+            'state' : False,
+            'name' : "풍아"
+        },
+        'cg' : {
+            'now' : [cg[0], cg[1], cg[2]],
+            'goal' : [0, 0, 0],
+            'need' : [0, 0, 0],
+            'surplus' : [0, 0, 0],
+            'mix_cnt' : [0, 0],
+            'state' : False,
+            'name' : "천광"
+        }
+    }
 
-    book['buse'] = {'now':[0,1,2], 'goal':[3,4,5], 'need':[6,7,8], 'surplus':[9,0,10]}
-
-    print(book)
-    print()
-    print(book['buse'])
-    print()
-    print(book['buse']['now'])
-    print()
-    print(book['buse']['now'][1])
-
-    book['buse']['now'][1] = 2
-    print()
-    print(book['buse']['now'])
-
-    
-    book['poonga'] = {'now':[2,0,1], 'goal':[3,4,5], 'need':[6,7,8], 'surplus':[9,0,10]}
-
-    print(book, end='\n\n')
-
-    print(book.values())
+    for i in books.keys():
+        print(books[i]['need'][0])
 
 
 main()
