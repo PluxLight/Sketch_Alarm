@@ -1,8 +1,14 @@
 package com.example;
 
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 
 import javax.security.auth.login.LoginException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -11,9 +17,15 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.entities.Activity.ActivityType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Reader;
 
 public class tbot extends ListenerAdapter {
 
@@ -24,6 +36,30 @@ public class tbot extends ListenerAdapter {
         String timestr0 = simpl.format(time0);
 
         System.out.println(timestr0 + " 이건 void main 에서 출력한 것");
+
+        //liver.json의 value를 전부 false로
+        try (Reader reader = new FileReader("./liver.json")) {
+            JSONParser parser = new JSONParser();        
+            JSONObject liverjson = (JSONObject) parser.parse(reader);
+            Iterator<String> iter = liverjson.keySet().iterator();
+
+            while(iter.hasNext()) {
+                String key = iter.next();
+                liverjson.replace(key, "false");
+            }
+
+            FileWriter file = new FileWriter("./liver.json");
+            file.write(liverjson.toJSONString());
+            file.flush();
+            file.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // 기본 jda를 만들고
         JDA jda = JDABuilder.createDefault("ODcxMDI3NTgzNTIzOTEzNzM4.YQVVpg.AYLbNxRgwm_8H6WzC3o0LA9KfoU")
@@ -68,13 +104,13 @@ public class tbot extends ListenerAdapter {
             // sendPrivateMessage(author, "u n i");
             doThing(jda, msgdothg1);
         }
-        else if (event.getMessage().getContentRaw().equals("!sd")) {
+        // else if (event.getMessage().getContentRaw().equals("!sd")) {
 
-            event.getChannel().sendMessage("i will be return").queue();
-            doThing(jda, msgdothg2);
-            jda.shutdown();
+        //     event.getChannel().sendMessage("i will be return").queue();
+        //     doThing(jda, msgdothg2);
+        //     jda.shutdown();
 
-        }
+        // }
     }
 
 

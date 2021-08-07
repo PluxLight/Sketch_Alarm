@@ -60,9 +60,9 @@ public class App {
                             .header("accept-language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
 
                             //쿠키 PHPSESSID 값이 있어야 모든 방송 유저의 정보를 얻을 수 있음
-                            .cookie("PHPSESSID", "7937790_pPfJxt7dIt26vd7Z3zFEp0c3urZcx8Um")
-                            .cookie("__cf_bm", "0b0879e7ef78ffbca5610c3300946b0a95d2def0-1627622858-1800-ARqyjlrT/+FxGrK8YJGUg1uucf+dDGAZsr+8WXXX/b7/P4kZ0g7zOpT2gpTQeZ+JtcYrh9U3N8RRFxjvM60qzxr26hZy9BqiKHAlAEFjWHwTCf+Igl1gNShQPlrvZqgb95hr7MRbtyta3HhIrp4NG5QTvFX9bSGDckc7g66fOzqnm6JHz1hz+k/lZ+MAEf2I8A==")
-                            .cookie("device_token", "42e0d38a29bf95200c4c20d156ac0373")
+                            .cookie("PHPSESSID", "7937790_Vmr8mfVXA5FeaKvIMCgkkhPuj80JcbA1")
+                            // .cookie("__cf_bm", "0b0879e7ef78ffbca5610c3300946b0a95d2def0-1627622858-1800-ARqyjlrT/+FxGrK8YJGUg1uucf+dDGAZsr+8WXXX/b7/P4kZ0g7zOpT2gpTQeZ+JtcYrh9U3N8RRFxjvM60qzxr26hZy9BqiKHAlAEFjWHwTCf+Igl1gNShQPlrvZqgb95hr7MRbtyta3HhIrp4NG5QTvFX9bSGDckc7g66fOzqnm6JHz1hz+k/lZ+MAEf2I8A==")
+                            // .cookie("device_token", "42e0d38a29bf95200c4c20d156ac0373")
 
                             .header("referer", "https://sketch.pixiv.net/")
                             .header("X-Requested-With", api_lives)
@@ -95,6 +95,8 @@ public class App {
             String all_data = "";
             String exclive = "";
 
+            txtout(datajson2, "./datajson2.txt");
+
             for(int i=0;i<datajson2.size();i++){
                 JSONObject temp = (JSONObject)datajson2.get(i);
                 String unique_name =  (String)((JSONObject)temp.get("user")).get("unique_name");
@@ -111,7 +113,7 @@ public class App {
             }
 
             txtout(all_data, "./all_data.txt");
-            txtout(exclive, "./exclive.txt");
+            // txtout(exclive, "./exclive.txt");
 
 
             /*

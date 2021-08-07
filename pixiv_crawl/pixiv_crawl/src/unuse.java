@@ -1,4 +1,61 @@
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+
+
+
+
 public class unuse {
+
+    public static void onmain(String[] args) throws Exception {
+
+        JSONObject obj1 = new JSONObject();
+        JSONObject obj2 = new JSONObject();
+
+        HashMap<String, String> map1 = new HashMap<String, String>();
+        HashMap<String, HashMap<String, String>> map2 = new HashMap<String, HashMap<String, String>>();
+
+        String hd = "hd";
+        String ch = "ch";
+        String nn = "nn";
+        
+        int idint = 1;
+
+        for(int i=0; i<5; i++) {
+
+            // String jsonstr = String.format("{\"name_0%d\" : {\"hd\" : \"%s\", \"ch\" : \"%s\", \"nn\" : \"%s\"}}", idint, hd+1, ch+1, nn+1);
+            String jsonstr = String.format("{\"hd\" : \"%s\", \"ch\" : \"%s\", \"nn\" : \"%s\"}", hd+i, ch+i, nn+i);
+            // System.out.println("jsonstr = "+jsonstr);
+
+            JSONObject obj3 = (JSONObject) new JSONParser().parse(jsonstr);
+
+            obj2.put("name_0"+i, obj3);
+            
+
+
+        }
+
+        System.out.println(obj2+"\n\n");
+
+        System.out.println(((JSONObject)obj2.get("name_02")).get("ch"));
+
+        System.out.println("\n\n");
+
+        Iterator<String> iter = obj2.keySet().iterator();
+
+        while(iter.hasNext()) {
+            String key = iter.next();
+            System.out.println(key + " : " + obj2.get(key));
+        }
+
+    }
+
+
     
 }
 
