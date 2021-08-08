@@ -106,30 +106,7 @@ public class tbot extends ListenerAdapter {
             }
         }
 
-        // 받은 메세지 내용이 !ping이라면
-        // if (event.getMessage().getContentRaw().equals("!ping ping")) {
-        //     // pong라는 내용을 보낸다.
-        //     event.getChannel().sendMessage("pong pong!").queue();
-        //     System.out.printf("author :  %s\n", author);
-        //     System.out.printf("message :  %s\n", message);
-        //     System.out.printf("channel :  %s\n", channel);
-
-        //     System.out.println("");
-
-        //     System.out.println(author.getClass().getName());
-        //     System.out.println(message.getClass().getName());
-        //     System.out.println(channel.getClass().getName());
-
-        //     // sendPrivateMessage(author, "u n i");
-        //     doThing(jda, msgdothg1);
-        // }
-        // else if (event.getMessage().getContentRaw().equals("!sd")) {
-
-        //     event.getChannel().sendMessage("i will be return").queue();
-        //     doThing(jda, msgdothg2);
-        //     jda.shutdown();
-
-        // }
+        
     }
 
 
@@ -203,3 +180,28 @@ public class tbot extends ListenerAdapter {
 }
 
 //channel = 871290747377307730
+
+// 받은 메세지 내용이 !ping이라면
+        // if (event.getMessage().getContentRaw().equals("!ping ping")) {
+        //     // pong라는 내용을 보낸다.
+        //     event.getChannel().sendMessage("pong pong!").queue();
+        //     System.out.printf("author :  %s\n", author);
+        //     System.out.printf("message :  %s\n", message);
+        //     System.out.printf("channel :  %s\n", channel);
+
+        //     System.out.println("");
+
+        //     System.out.println(author.getClass().getName());
+        //     System.out.println(message.getClass().getName());
+        //     System.out.println(channel.getClass().getName());
+
+        //     // sendPrivateMessage(author, "u n i");
+        //     doThing(jda, msgdothg1);
+        // }
+        // else if (event.getMessage().getContentRaw().equals("!sd")) {
+
+        //     event.getChannel().sendMessage("i will be return").queue();
+        //     doThing(jda, msgdothg2);
+        //     jda.shutdown();
+
+        // }
