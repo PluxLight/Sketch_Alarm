@@ -63,8 +63,8 @@ public class OnReadyPlay extends ListenerAdapter {
                         }
                     }
 
-                    txtout(liverjson, "./liverjson.txt");
-                    txtout(iter, "./iter.txt");
+                    // txtout(liverjson, "./liverjson.txt");
+                    // txtout(iter, "./iter.txt");
 
 
                     List<TextChannel> channels = jda.getTextChannelsByName("알람", true);
@@ -171,7 +171,7 @@ public class OnReadyPlay extends ListenerAdapter {
                 return_obj.put(pixiv_id, obj3);
             }
 
-            txtout(return_obj, "./return_obj.txt");
+            // txtout(return_obj, "./return_obj.txt");
 
         return return_obj;
 
