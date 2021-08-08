@@ -188,8 +188,9 @@ def sim_calc(books, ta_lv):
 if __name__ == "__main__":
 
     books = {
-        'now' : [62, 53, 16],
+        # 'now' : [62, 53, 16], #0807
         # 'now' : [0, 0, 0],
+        'now' : [89, 78, 17], #0808
         'goal': [0, 0, 0],
         'need': [0, 0, 0],
         'surplus': [0, 0, 0],
