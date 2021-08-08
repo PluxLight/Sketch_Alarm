@@ -67,25 +67,24 @@ public class OnReadyPlay extends ListenerAdapter {
                     // txtout(iter, "./iter.txt");
 
 
-                    List<TextChannel> channels = jda.getTextChannelsByName("알람", true);
-                    for(TextChannel ch : channels) {
-                        for(String liver : livers) {
-                            System.out.println(liver);
-                            if(liverjson.get(liver).equals("false")) {
-                                String username = (String) ((JSONObject)crawljson.get(liver)).get("name");
-                                String uniqname = (String) ((JSONObject)crawljson.get(liver)).get("unique_name");
-                                String ch_id = (String) ((JSONObject)crawljson.get(liver)).get("channel_id");
-                                String liveurl = "https://sketch.pixiv.net/@";
-                                String alarmmsg = String.format("%s님이 방송을 시작했습니다!", username);
-                                String linkmsg = String.format("%s%s/lives/%s", liveurl, uniqname, ch_id);
+                    for(String liver : livers) {
+                        // System.out.println(liver);
+                        if(liverjson.get(liver).equals("false")) {
+                            String username = (String) ((JSONObject)crawljson.get(liver)).get("name");
+                            String uniqname = (String) ((JSONObject)crawljson.get(liver)).get("unique_name");
+                            String ch_id = (String) ((JSONObject)crawljson.get(liver)).get("channel_id");
+                            String liveurl = "https://sketch.pixiv.net/@";
+                            String alarmmsg = String.format("%s님이 방송을 시작했습니다!", username);
+                            String linkmsg = String.format("%s%s/lives/%s", liveurl, uniqname, ch_id);
 
-                                ch.sendMessage(alarmmsg).queue();
-                                ch.sendMessage(linkmsg).queue();
+                            // System.out.println(alarmmsg);
+                            // System.out.println(linkmsg);
 
-                                liverjson.replace(liver, "true");
-                            }
+                            doThing(jda, alarmmsg);
+                            doThing(jda, linkmsg);
+
+                            liverjson.replace(liver, "true");
                         }
-                        
                     }
 
                     if(nonlivers.size() > 0) {
@@ -116,7 +115,7 @@ public class OnReadyPlay extends ListenerAdapter {
         };
 
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 10, 60, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable, 5, 60, TimeUnit.SECONDS);
 
     }
 
@@ -184,6 +183,14 @@ public class OnReadyPlay extends ListenerAdapter {
         String htmlString = temp.toString();    
         byte[] by=htmlString.getBytes();
         output.write(by);
+    }
+
+    public void doThing(JDA jda, String sdmsg) {
+        long chid = 873127195336405042L;
+        TextChannel channel = jda.getTextChannelById(chid);
+        if (channel != null) {
+            channel.sendMessage(sdmsg).queue();
+        }
     }
 
 }

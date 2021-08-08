@@ -36,7 +36,7 @@ public class tbot extends ListenerAdapter {
         SimpleDateFormat simpl = new SimpleDateFormat("yyyy년 MM월 dd일 aa hh시 mm분 ss초");
         String timestr0 = simpl.format(time0);
 
-        System.out.println(timestr0 + " 이건 void main 에서 출력한 것");
+        // System.out.println(timestr0 + " 이건 void main 에서 출력한 것");
 
         //liver.json의 value를 전부 false로
         editjson("all_", "false");
@@ -65,7 +65,7 @@ public class tbot extends ListenerAdapter {
         String msgdothg1 = "이건 !ping ping 메세지를 입력 해 doThing으로 보낸 메세지입니다";
         String msgdothg2 = "이건 !sd 메세지를 입력 해 doThing으로 보낸 메세지입니다";
 
-        System.out.println(author + " " + channel + " " + message);
+        // System.out.println(author + " " + channel + " " + message);
 
         JSONObject userlist = new JSONObject();
         
@@ -74,10 +74,10 @@ public class tbot extends ListenerAdapter {
         if (author.isBot()) return;
 
         if (event.getMessage().getContentRaw().charAt(0) == '!') {
-            System.out.println("user command on");
+            // System.out.println("user command on");
 
             String[] msgs = event.getMessage().getContentRaw().substring(1).split(" ");
-            System.out.println(Arrays.toString(msgs));
+            // System.out.println(Arrays.toString(msgs));
 
             if (msgs.length <= 0) return;
             if (msgs[0].equalsIgnoreCase("pid")) {
