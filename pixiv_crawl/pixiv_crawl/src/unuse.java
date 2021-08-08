@@ -2,9 +2,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Reader;
 
 
 
@@ -12,7 +20,7 @@ import java.util.Set;
 
 public class unuse {
 
-    public static void onmain(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         JSONObject obj1 = new JSONObject();
         JSONObject obj2 = new JSONObject();
@@ -43,6 +51,7 @@ public class unuse {
         System.out.println(obj2+"\n\n");
 
         System.out.println(((JSONObject)obj2.get("name_02")).get("ch"));
+        System.out.println(obj2.getClass().getName());
 
         System.out.println("\n\n");
 
@@ -52,6 +61,30 @@ public class unuse {
             String key = iter.next();
             System.out.println(key + " : " + obj2.get(key));
         }
+
+        try (Reader reader = new FileReader("./exampke.json")) {
+            JSONParser parser = new JSONParser();        
+            JSONObject liverjson = (JSONObject) parser.parse(reader);
+
+            liverjson.put("name76", "kim");
+            liverjson.remove("nameless");
+            liverjson.replace("lastorder", "nonamed");
+            liverjson.replace("name01", "aran");
+
+            FileWriter file = new FileWriter("./exampke.json");
+            file.write(liverjson.toJSONString());
+            file.flush();
+            file.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 

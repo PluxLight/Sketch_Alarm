@@ -1,6 +1,7 @@
 package com.example;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import javax.security.auth.login.LoginException;
@@ -38,28 +39,7 @@ public class tbot extends ListenerAdapter {
         System.out.println(timestr0 + " 이건 void main 에서 출력한 것");
 
         //liver.json의 value를 전부 false로
-        try (Reader reader = new FileReader("./liver.json")) {
-            JSONParser parser = new JSONParser();        
-            JSONObject liverjson = (JSONObject) parser.parse(reader);
-            Iterator<String> iter = liverjson.keySet().iterator();
-
-            while(iter.hasNext()) {
-                String key = iter.next();
-                liverjson.replace(key, "false");
-            }
-
-            FileWriter file = new FileWriter("./liver.json");
-            file.write(liverjson.toJSONString());
-            file.flush();
-            file.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        editjson("all_", "false");
 
         // 기본 jda를 만들고
         JDA jda = JDABuilder.createDefault("ODcxMDI3NTgzNTIzOTEzNzM4.YQVVpg.AYLbNxRgwm_8H6WzC3o0LA9KfoU")
@@ -84,18 +64,46 @@ public class tbot extends ListenerAdapter {
         MessageChannel channel = event.getChannel();    //This is the MessageChannel that the message was sent to.
         String msgdothg1 = "이건 !ping ping 메세지를 입력 해 doThing으로 보낸 메세지입니다";
         String msgdothg2 = "이건 !sd 메세지를 입력 해 doThing으로 보낸 메세지입니다";
+
+        System.out.println(author + " " + channel + " " + message);
+
+        JSONObject userlist = new JSONObject();
         
         // channel.sendMessage("Your message here.").queue();
 
         if (author.isBot()) return;
 
         if (event.getMessage().getContentRaw().charAt(0) == '!') {
+            System.out.println("user command on");
+
             String[] msgs = event.getMessage().getContentRaw().substring(1).split(" ");
+            System.out.println(Arrays.toString(msgs));
+
             if (msgs.length <= 0) return;
             if (msgs[0].equalsIgnoreCase("pid")) {
-
+                editjson("pid", msgs[1]);
+                event.getChannel().sendMessage(msgs[1] + " 유저를 등록됐습니다").queue();
             }
-            //삭제할 때 그런 유저가 없으면 어떻게 뜨는지 미리 예시로 확인바람
+            else if (msgs[0].equalsIgnoreCase("pdel")) {
+                editjson("pdel", msgs[1]);
+                event.getChannel().sendMessage(msgs[1] + " 유저를 삭제했습니다").queue();
+            }
+            else if (msgs[0].equalsIgnoreCase("plist")) {
+                userlist = editjson("plist", "");
+                Iterator<String> iter = userlist.keySet().iterator();
+                int i = 0;
+
+                String sendlist = "";
+
+                while(iter.hasNext()) {
+                    String key = iter.next();
+                    sendlist += "pixiv_id : " + key + "\n";
+                    i += 1;
+                }
+
+                sendlist = "등록한 유저는 총 " + i + "명이며 다음과 같습니다\n\n" + sendlist;
+                event.getChannel().sendMessage(sendlist).queue();
+            }
         }
 
         // 받은 메세지 내용이 !ping이라면
@@ -144,6 +152,53 @@ public class tbot extends ListenerAdapter {
         if (channel != null) {
             channel.sendMessage(sdmsg).queue();
         }
+    }
+
+    public static JSONObject editjson(String cmd, String val) {
+        // cmd
+        // = all_ : false
+        // = pid : put pixiv id
+        // = pdel : delete pixiv id
+        // = plist : pixiv id list return
+        JSONObject returnobj = new JSONObject();
+
+        try (Reader reader = new FileReader("./liver.json")) {
+            JSONParser parser = new JSONParser();        
+            JSONObject liverjson = (JSONObject) parser.parse(reader);
+            Iterator<String> iter = liverjson.keySet().iterator();
+
+            if (cmd.equalsIgnoreCase("all_")) {
+                while(iter.hasNext()) {
+                    String key = iter.next();
+                    liverjson.replace(key, "false");
+                }
+            }
+            else if (cmd.equalsIgnoreCase("pid")) {
+                liverjson.put(val, "false");
+            }
+            else if (cmd.equalsIgnoreCase("pdel")) {
+                liverjson.remove(val);                
+            }
+            else if (cmd.equalsIgnoreCase("plist")) {
+                returnobj = liverjson;
+            }
+            else ;
+
+            FileWriter file = new FileWriter("./liver.json");
+            file.write(liverjson.toJSONString());
+            file.flush();
+            file.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return returnobj;
+
     }
 }
 

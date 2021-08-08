@@ -27,7 +27,7 @@ import org.json.simple.parser.JSONParser;
 import java.net.CookieManager;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void nomain(String[] args) throws Exception {
 
         String url = "https://sketch.pixiv.net/api/lives.json";
         String liveurl = "https://sketch.pixiv.net/lives";
