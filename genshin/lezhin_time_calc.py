@@ -67,7 +67,7 @@ def time_clac():
             print(f'{LEZHIN-lezhin_surplus%20}레진을 더 모아 레진을 전부 소모합니다')
             print(f'충전 시작 시간은 {time_start_charge}로 조정됐으며')
             temp = time_goal - time_start_charge
-            print(temp)
+            # print(temp)
             temp = str(temp).split(':')
             temp = int(temp[0])*60 + int(temp[1])
             temp = temp//8
