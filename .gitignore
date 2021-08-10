@@ -7,3 +7,7 @@ jdademo/*.txt
 jdatest/dsbot/src/test
 
 jdatest/dsbot/target
+
+**/target
+
+**/test
