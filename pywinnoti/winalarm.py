@@ -11,6 +11,9 @@ import json
 
 import sys
 
+#쿠키 값 외부에서 읽어들이는 함수 생성하고 나머지 마무리
+#스케줄러로 1분마다 실행되게끔
+
 class WinAlarm():
 
     
@@ -35,16 +38,21 @@ class WinAlarm():
 
 
     def check_cookie(self):
+
         try:
             req = requests.get(self.check_cookie_page, cookies=self.pixiv_cookie, headers=self.user_header)
+
             if req.status_code == 200:
                 html = req.text
+
                 if "login: 'yes'" in html:
                     print("픽시브 로그인 성공\n")
+
                 else:
                     print("픽시브 로그인 실패. 쿠키값을 갱신하고 다시 실행해주세요.") #콘솔에서 보일거
                     sys.exit('program end...')
                     #알람 메세지로도 보이게끔
+
         except:
             print("픽시브 로그인 실패. 쿠키값을 갱신하고 다시 실행해주세요.") #콘솔에서 보일거
             sys.exit('program end...')
@@ -60,12 +68,14 @@ class WinAlarm():
         f = open('user.txt', 'r', encoding='utf8')
         while True:
             line = f.readline().strip()
+
             if not line: #더이상 읽을 줄이 없거나 줄이 있어도 공백이면
                 break
             self.artists.append(line)
             self.artists_status[line] = 'False'
         f.close()
         print(f'현재 등록된 작가는 {len(self.artists)}명이며 다음과 같습니다.')
+
         for artist in self.artists:
             print(f'{cnt}. {artist}')
             cnt += 1
@@ -79,13 +89,16 @@ class WinAlarm():
 
         if len(self.artists) == 0:
             print(f'등록한 작가가 없습니다. user.txt 파일에 한 줄에 한명씩 작가를 입력해주세요.')
+
         else:
+
             for self.artist in self.artists: #self.check_user_page = 'https://sketch.pixiv.net/@user_name'
                 split_url = self.check_user_page.split('@')[0]
                 self.check_user_page = split_url + '@' + self.artist
 
                 try:
                     req = requests.get(self.check_user_page, cookies=self.pixiv_cookie, headers=self.user_header)
+
                     if req.status_code == 200:
                         html = req.text
                         
@@ -99,10 +112,12 @@ class WinAlarm():
 
                             print(f'URL = {self.live_page}{self.ch_id}')
                             self.notice()
+
                         else:
                             print(f'{self.artist}님은 휴식중입니다.') #콘솔에서 보일거
                             self.artists_status[self.artist] == 'False'
                             #알람 메세지로도 보이게끔
+
                 except:
                     print("픽시브 로그인 실패. 쿠키값을 갱신하고 다시 실행해주세요.") #콘솔에서 보일거
                     sys.exit('program end...')
@@ -117,6 +132,7 @@ class WinAlarm():
         try:
             webbrowser.open(live_url)
             print('open url...')
+            
         except:
             print('Failed open URL')
 
