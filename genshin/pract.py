@@ -36,8 +36,13 @@ def domain():
 
     return 0
 
+def main():
+    temp = 'https://sketch.pixiv.net/@user_name'
+    
+    print(temp.split('@')[0])
+
 
 
 
 if __name__ == "__main__":
-    domain()
+    main()
