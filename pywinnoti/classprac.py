@@ -17,7 +17,8 @@ class prac:
         self.path_icon = 'icon.ico'
         self.crawl_count = 1
 
-        self.pixiv_cookie = {'PHPSESSID' : '7937790_pPfJxt7dIt26vd7Z3zFEp0c3urZcx8Um'} #Cookie.json에서 값을 읽어온다
+        # self.pixiv_cookie = {'PHPSESSID' : '7937790_pPfJxt7dIt26vd7Z3zFEp0c3urZcx8Um'} #Cookie.json에서 값을 읽어온다
+        self.pixiv_cookie = {'PHPSESSID' : ''}
         self.userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.277 Whale/2.9.118.38 Safari/537.36"
         self.user_header = {
                             'user-agent' : self.userAgent, 
@@ -101,6 +102,27 @@ class prac:
                     self.artists_status[self.artist] = 'False'
                     #알람 메세지로도 보이게끔
 
+    # def read_cookie(self):
+    #     try:
+    #         with open('Cookie.txt', 'r', encoding='utf8') as file:
+    #             lines = file.readlines()
+    #             for line in lines:
+    #                 # print(line)
+    #                 if 'PHPSESSID' in line.upper().strip():
+    #                     temp = line.split('\t')
+    #                     print(f'{temp[-1]}')
+    #                     self.pixiv_cookie['PHPSESSID'] = temp[-1]
+    #         if self.pixiv_cookie['PHPSESSID'] == '':
+    #             print('end game')
+    #     except Exception as e:
+    #         print(f'\n{e}\n')
+
+    def printprac(self):
+        print(f'개행문자\
+            \n연습중입니다\
+            \n이거은근\
+            \n어렵네요')
+
 
     def main(self):
         # print('alpa')
@@ -108,8 +130,10 @@ class prac:
         # self.plus()
         # print(f'{self.first}\n{self.send}')
         # self.amnu_key()
-        self.clear_artist_status()
-        self.filewr()
+        # self.clear_artist_status()
+        # self.filewr()
+        # self.read_cookie()
+        self.printprac()
 
 
 if __name__ == "__main__":
