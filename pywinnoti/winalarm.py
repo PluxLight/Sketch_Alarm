@@ -7,13 +7,11 @@ from bs4 import BeautifulSoup
 import schedule
 import time
 
-import json
-
 import sys
 import os
 
 
-#pyinstaller -F -i icon.ico --additional-hooks-dir hooks
+#pyinstaller -F -i icon.ico --additional-hooks-dir hooks winalarm.py
 
 
 class WinAlarm():
@@ -60,11 +58,11 @@ class WinAlarm():
                         \n다음 지시사항을 따라하십시오.\n')
 
                 print(f'1. 크롬 확장 프로그램 Get Cookies.txt를 설치합니다.\n\
-                        \nGet Cookies.txt DownLoad Link : https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid\n\
-                        \n2. 픽시브에 접속하고 로그인 후 메인페이지로 갑니다.\
-                        \n3. 다운받은 Get Cookies.txt 확장프로그램을 클릭하고 Export를 클릭하여 텍스트 파일을 다운받습니다.\
-                        \n4. 다운받은 텍스트 파일의 내용을 전부 실행중인 프로그램과 같은 폴더에 있는 Cookie.txt 파일에 전부 붙여넣고 저장합니다.\
-                        \n5. 4번 과정을 마치고 나서 프로그램을 다시 실행하십시오.')
+                        \nGet Cookies.txt DownLoad Link : https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid\
+                        \n\n2. 픽시브에 접속하고 로그인 후 메인페이지로 갑니다.\
+                        \n\n3. 다운받은 Get Cookies.txt 확장프로그램을 클릭하고 Export를 클릭하여 텍스트 파일을 다운받습니다.\
+                        \n\n4. 다운받은 텍스트 파일의 내용을 전부 실행중인 프로그램과 같은 폴더에 있는 Cookie.txt 파일에 전부 붙여넣고 저장합니다.\
+                        \n\n5. 4번 과정을 마치고 나서 프로그램을 다시 실행하십시오.\n')
 
                 self.end_program()
 
@@ -184,7 +182,6 @@ class WinAlarm():
         toaster = ToastNotifier()
 
         try:
-
             if bool == True:
                 msg = f'{self.nick}({self.artist}) {self.contents}'
                 toaster.show_toast(self.title, 
