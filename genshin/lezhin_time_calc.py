@@ -16,15 +16,15 @@ def time_clac():
     # time_goal = dt.datetime(2021,8,11,10,30,0).strftime('%Y-%m-%d %H:%M:%S')
     # time_now = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    time_goal = dt.datetime(2021,8,11,10,30,0)
+    time_goal = dt.datetime(2021,8,18,10,30,0)
     time_now = dt.datetime.now()
 
     print('지금 시간 : ' + str(time_now))
     print('목표 시간 : ' + str(time_goal))
 
-    lezhin_now = 7
+    lezhin_now = 80
     lezhin_goal = 155
-    lezhin_con_now = 5 #현재 농축레진
+    lezhin_con_now = 0 #현재 농축레진
     lezhin_con_goal = 5 #목표 시간에 보유할 농축레진
     time_plus = 0
     lezhin_surplus = 0
