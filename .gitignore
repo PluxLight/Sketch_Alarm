@@ -1,0 +1,10 @@
+**/myvenv
+
+/pywinnoti/Cookie.json
+/pywinnoti/Cookie.txt
+
+/pywinnoti/참고 텍스트
+/pywinnoti/dist
+/pywinnoti/build
+/pywinnoti/__pycache__
+/pywinnoti/winalarm.spec
