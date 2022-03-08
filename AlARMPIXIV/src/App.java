@@ -36,7 +36,7 @@ public class App {
                     .header("accept-language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
 
                     // 쿠키 PHPSESSID 값이 있어야 모든 방송 유저의 정보를 얻을 수 있음
-                    .cookie("PHPSESSID", "7937790_8jPWouw85yT4PPq2az5My9f2UcCApc7A")
+                    .cookie("PHPSESSID", "")
 
                     .header("referer", "https://sketch.pixiv.net/").header("X-Requested-With", api_lives)
                     .userAgent(userAgent)
