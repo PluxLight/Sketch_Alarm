@@ -11,3 +11,6 @@ jdatest/dsbot/target
 **/target
 
 **/test
+*.jar
+*.txt
+*.json

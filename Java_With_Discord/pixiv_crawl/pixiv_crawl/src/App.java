@@ -34,22 +34,6 @@ public class App {
         String api_lives = "https://sketch.pixiv.net/lives?sort_by=created_at";
         String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.277 Whale/2.9.118.38 Safari/537.36";
 
-        //일단 접속해서 쿠키부터 얻어보자
-        // Connection.Response livepage=Jsoup.connect(liveurl)
-        //                                 .header("referer", "https://sketch.pixiv.net/")
-        //                                 .userAgent(userAgent)
-        //                                 .method(Connection.Method.GET)
-        //                                 .execute();
-
-        // Map<String, String> PHPSESSID=livepage.cookies();
-        // Document firstweb=livepage.parse();
-
-        // System.out.println(PHPSESSID);
-        
-        // txtout(firstweb, "./firstweb.txt");
-
-
-
         Document doc = Jsoup.connect(url)
                             
                             .header("authority", "sketch.pixiv.net")
@@ -60,9 +44,9 @@ public class App {
                             .header("accept-language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7")
 
                             //쿠키 PHPSESSID 값이 있어야 모든 방송 유저의 정보를 얻을 수 있음
-                            .cookie("PHPSESSID", "7937790_Vmr8mfVXA5FeaKvIMCgkkhPuj80JcbA1")
-                            // .cookie("__cf_bm", "0b0879e7ef78ffbca5610c3300946b0a95d2def0-1627622858-1800-ARqyjlrT/+FxGrK8YJGUg1uucf+dDGAZsr+8WXXX/b7/P4kZ0g7zOpT2gpTQeZ+JtcYrh9U3N8RRFxjvM60qzxr26hZy9BqiKHAlAEFjWHwTCf+Igl1gNShQPlrvZqgb95hr7MRbtyta3HhIrp4NG5QTvFX9bSGDckc7g66fOzqnm6JHz1hz+k/lZ+MAEf2I8A==")
-                            // .cookie("device_token", "42e0d38a29bf95200c4c20d156ac0373")
+                            .cookie("PHPSESSID", "")
+                            // .cookie("__cf_bm", "")
+                            // .cookie("device_token", ")
 
                             .header("referer", "https://sketch.pixiv.net/")
                             .header("X-Requested-With", api_lives)
@@ -114,27 +98,6 @@ public class App {
 
             txtout(all_data, "./all_data.txt");
             // txtout(exclive, "./exclive.txt");
-
-
-            /*
-
-            txtout(datajson2, "./datajson2.txt");
-
-            JSONObject obj3 = (JSONObject)datajson2.get(0);
-
-            txtout(obj3, "./obj3.json");
-
-            // JSONObject obj4 = (JSONObject)obj3.get("user");
-
-            String obj4 = (String)((JSONObject)obj3.get("user")).get("unique_name");
-
-            // System.out.println(obj4);
-
-            // txtout(obj4, "./obj4.json");
-
-            txtout(obj4, "./obj4.text");
-
-            */
 
 
     }
